@@ -1,0 +1,37 @@
+<div class="modal-container">
+  <div class=" order">
+    <h1 class="title">Order</h1>
+    <p>Заказчик: {{currentUser.client[0].firstname}}</p>
+      <p>Type photosession:</p>
+    <select  type="text" [(ngModel)]="form.id_photo" >
+      <option [ngValue]="null" disabled>Choose type photosession</option>
+      <option *ngFor="let photo of photosession" [ngValue]="photo.id">{{photo.photosession}}</option>
+    </select>
+
+      <p>Location:</p>
+    <select  type="text" [(ngModel)]="form.id_location">
+      <option [ngValue]="null" disabled>Choose location</option>
+      <option *ngFor="let location of local" [ngValue]="location.id">{{location.location_name}}</option>
+    </select>
+
+
+    <p>Specialist:</p>
+    <select  type="text" [(ngModel)]="form.id_specialist">
+      <option [ngValue]="null" disabled>Choose specialist</option>
+      <option *ngFor="let spec of specialist" [ngValue]="spec.id">{{spec.lastname}} {{spec.firstname}}</option>
+    </select>
+
+    <p >Date of completion</p>
+    <input type="date" name="calendar" value="2022-12-22"
+           max="2024-01-01" min="2022-12-22"  [(ngModel)]="form.date_in" >
+
+
+    <div class="btn-container">
+      <button (click)="closeMe()">close</button>
+      <button (click)="confirm()">Confirm</button>
+    </div>
+  </div>
+  <div class="alert alert-success" *ngIf="isSuccessful">
+    Your registration is successful!
+  </div>
+</div>

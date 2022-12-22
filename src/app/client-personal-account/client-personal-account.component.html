@@ -1,0 +1,28 @@
+<div class="main-page"  *ngIf="currentUser ; else loggedOut">
+<div class="main_content">
+  <form class="profile">
+  <h1>
+     My Profile
+  </h1>
+    <h2>Firstname: {{currentUser.client[0].firstname}}</h2>
+    <h2>Lastname: {{currentUser.client[0].lastname }}</h2>
+    <h2>Patronymic: {{currentUser.client[0].patronymic}}</h2>
+    <h2>Email: {{currentUser.client[0].email}}</h2>
+  </form>
+</div>
+  <div class="main_content2">
+    <div class="button-order-class">
+      <button  mat-stroked-button class="button-order" (click)="openModal()">
+        Place an order
+      </button>
+    </div>
+    <div #modal>
+    </div>
+  </div>
+</div>
+
+
+
+<ng-template #loggedOut>
+  Please login!
+</ng-template>

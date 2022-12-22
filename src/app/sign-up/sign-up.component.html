@@ -1,0 +1,125 @@
+<div class="body">
+  <h1 class="name">Sign up</h1>
+  <form  *ngIf="!isSuccessful"
+         name="form"
+         (ngSubmit)="f.form.valid && onSubmit()"
+         #f="ngForm"
+         novalidate class="form-group">
+  <form class="sign_up-form">
+    <p>Name</p>
+    <mat-form-field class="sign_up-full-width">
+      <input  matInput  type="text"
+              name="firstname"
+              class="form-control"
+              [(ngModel)]="form.firstname"
+              required
+              minlength="3"
+              maxlength="20"
+              #firstname="ngModel">
+      <div class="alert-danger" *ngIf="firstname.errors && f.submitted">
+        <div *ngIf="firstname.errors['required']">Firstname is required</div>
+        <div *ngIf="firstname.errors['minlength']">
+          Firstname must be at least 3 characters
+        </div>
+        <div *ngIf="firstname.errors['maxlength']">
+          Firstname must be at most 20 characters
+        </div>
+      </div>
+    </mat-form-field>
+  </form>
+
+  <form class="sign_up-form">
+    <p>Lastname</p>
+    <mat-form-field class="sign_up-full-width">
+      <input  matInput type="text" name="lastname"
+              class="form-control"
+              [(ngModel)]="form.lastname"
+              required
+              minlength="3"
+              maxlength="20"
+              #lastname="ngModel">
+      <div class="alert-danger" *ngIf="lastname.errors && f.submitted">
+        <div *ngIf="lastname.errors['required']">Lastname is required</div>
+        <div *ngIf="lastname.errors['minlength']">
+          Lastname must be at least 3 characters
+        </div>
+        <div *ngIf="lastname.errors['maxlength']">
+          Lastname must be at most 20 characters
+        </div>
+      </div>
+    </mat-form-field>
+  </form>
+
+  <form class="sign_up-form">
+    <p>Patronymic</p>
+    <mat-form-field class="sign_up-full-width">
+      <input  matInput  type="text" name="patronymic"class="form-control"
+              [(ngModel)]="form.patronymic"
+              required
+              minlength="3"
+              maxlength="20"
+              #patronymic="ngModel">
+      <div class="alert-danger" *ngIf="patronymic.errors && f.submitted">
+        <div *ngIf="patronymic.errors['required']">Patronymic is required</div>
+        <div *ngIf="patronymic.errors['minlength']">
+          Patronymic must be at least 3 characters
+        </div>
+        <div *ngIf="patronymic.errors['maxlength']">
+          Patronymic must be at most 20 characters
+        </div>
+      </div>
+    </mat-form-field>
+  </form>
+
+  <form class="sign_up-form">
+    <p>Email</p>
+    <mat-form-field class="sign_up-full-width">
+      <input  matInput type="email"
+              class="form-control"
+              name="email"
+              [(ngModel)]="form.email"
+              required
+              email
+              #email="ngModel"/>
+      <div class="alert-danger" *ngIf="email.errors && f.submitted">
+        <div *ngIf="email.errors['required']">Email is required</div>
+        <div *ngIf="email.errors['email']">
+          Email must be a valid email address
+        </div>
+      </div>
+    </mat-form-field>
+  </form>
+
+  <form class="password-form">
+    <p>Password</p>
+    <mat-form-field class="password-full-width">
+      <input  matInput type="password"
+              class="form-control"
+              name="password"
+              [(ngModel)]="form.password"
+              required
+              minlength="6"
+              #password="ngModel" />
+      <div class="alert-danger" *ngIf="password.errors && f.submitted">
+        <div *ngIf="password.errors['required']">Password is required</div>
+        <div *ngIf="password.errors['minlength']">
+          Password must be at least 6 characters
+        </div>
+      </div>
+    </mat-form-field>
+  </form>
+    <div class="button-authorization" >
+      <button mat-fab  class="authorization-account-button">
+        Sign up
+      </button>
+    </div>
+      <div class="alert alert-warning" *ngIf="f.submitted && isSignUpFailed">
+        Signup failed!<br />{{ errorMessage }}
+      </div>
+
+  </form>
+  <div class="alert alert-success" *ngIf="isSuccessful">
+    Your registration is successful!
+  </div>
+
+</div>

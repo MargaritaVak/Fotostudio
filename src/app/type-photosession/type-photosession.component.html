@@ -1,0 +1,14 @@
+<div class="all-type-photosessions-main">
+  <mat-nav-list class ="type-photosessions">
+    <mat-list-item *ngFor="let photo of photosession">
+      <a>
+        <mat-card class="example-card">
+          <mat-card-content class="img-card-content">
+            <img class="img-main" [src]="sanitizer.bypassSecurityTrustResourceUrl(photo.photo)" alt="{{photo.photosession}}">
+          </mat-card-content>
+          <p class="ac-1">{{photo.photosession}}</p>
+        </mat-card>
+      </a>
+    </mat-list-item>
+  </mat-nav-list>
+</div>

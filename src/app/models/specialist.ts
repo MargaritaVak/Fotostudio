@@ -1,0 +1,1 @@
+export class Specialist{  id!: number ;  firstname!: string;  lastname!: string ;  patronymic!: string;  phone!:string;  email!: string;  specialization!: string;  experience!: string;  password!: string;}

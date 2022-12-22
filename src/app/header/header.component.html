@@ -1,0 +1,69 @@
+<mat-sidenav-container>
+  <mat-sidenav #drawer mode="side">
+    <mat-nav-list>
+      <a *ngIf="!isLoggedIn" [routerLink]=" ['/login']" mat-list-item href="#" routerLinkActive="active">
+        <span class="ml-2" > Вход </span></a>
+      <a *ngIf="isLoggedIn"  [routerLink]=" ['/client-personal-account']" mat-list-item href="#" routerLinkActive="active">
+        <span class="ml-2" > Личный кабинет </span></a>
+      <a [routerLink]=" ['/all-category']" mat-list-item href="#" routerLinkActive="active">
+        <span class="ml-2" > Все категории </span></a>
+      <a mat-list-item href="#" routerLinkActive="active">
+        <span class="ml-2" > Специалисты </span></a>
+      <a [routerLink]=" ['/location']"  mat-list-item href="#" routerLinkActive="active">
+        <span class="ml-2" > Локации </span></a>
+      <a [routerLink]=" ['/type-photosession']" mat-list-item href="#" routerLinkActive="active">
+        <span class="ml-2" > Фотосессии </span></a>
+
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+<div class="toolbar-container">
+  <mat-toolbar class="toolbar">
+    <form class="navbar-form">
+      <button mat-icon-button>
+        <mat-icon  class="list"(click)="drawer.toggle()">menu</mat-icon>
+      </button>
+    </form>
+
+    <form class="search-form">
+      <mat-form-field class="search-full-width" >
+        <input  matInput type="search" name="search" [(ngModel)]= "search">
+        <button matSuffix mat-button class="button-icon">
+          <mat-icon class="search-icon">search</mat-icon>
+        </button>
+      </mat-form-field>
+    </form>
+    <div class="spacer"></div>
+    <form class="name-site">
+        <h1>FOTOLAB</h1>
+    </form>
+    <div class="spacer"></div>
+    <div class="button-authorization" *ngIf="!isLoggedIn">
+      <button mat-fab [routerLink]="'/login'" class="authorization-account-button">
+        Log in
+      </button>
+    </div>
+
+    <div class="button-registration" *ngIf="!isLoggedIn">
+      <button  [routerLink]="'/sign-up'" mat-fab class="registration-account-button">
+        Sign up
+      </button>
+    </div>
+
+    <div class="button-authorization" *ngIf="isLoggedIn">
+      <button mat-fab [routerLink]="'/client-personal-account'" class="authorization-account-button">
+        Profile
+      </button>
+    </div>
+
+    <div class="button-registration" *ngIf="isLoggedIn">
+      <button  (click)="logout()" mat-fab class="registration-account-button">
+        LogOut
+      </button>
+    </div>
+  </mat-toolbar>
+</div>
+    <router-outlet></router-outlet>
+  </mat-sidenav-content>
+</mat-sidenav-container>
+
